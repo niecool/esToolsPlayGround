@@ -28,7 +28,7 @@ public class LuceneSearchTest {
 
     @Test
     public void testMyCollector() throws IOException {
-        String indexDir = "C:\\Users\\zhaochengye\\Desktop\\4CDggCNdRdSoQJEr3VF04w\\0\\index";
+        String indexDir = "C:\\Users\\****\\Desktop\\4CDggCNdRdSoQJEr3VF04w\\0\\index";
         Directory directory = FSDirectory.open(Paths.get(indexDir));
         IndexReader reader = DirectoryReader.open(directory);
         IndexSearcher searcher = new IndexSearcher(reader);
