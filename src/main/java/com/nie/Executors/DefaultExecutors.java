@@ -34,12 +34,32 @@ public class DefaultExecutors {
                     }
                 }
         );
+
+        System.out.println(Runtime.getRuntime().freeMemory());
         System.out.println(executorService1);
+        Runnable a = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(10_000_000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        executorService1.execute(a);
+        Thread t = new Thread(a);
+        t.start();
+
         for (int i=0;i<1000;i++){
             executorService1.execute(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("====");
+                    try {
+                        Thread.sleep(10_000_000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
 //            try {
@@ -50,9 +70,11 @@ public class DefaultExecutors {
 //                e.printStackTrace();
 //            }
         }
+        System.out.println(Runtime.getRuntime().freeMemory());
         System.out.println(executorService1);
         try {
             Thread.sleep(7000);
+            System.out.println(Runtime.getRuntime().freeMemory());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

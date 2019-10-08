@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -42,5 +43,8 @@ public class Test {
 //        Map<String,A> map = l.stream().collect(Collectors.toMap(PromotionProductKeyConverter::getKey, Function.identity()));
         A aa = l.stream().filter(x -> Objects.equals("中国3", x.getCountry())).findFirst().orElse(l.get(0));
                 System.out.println(JSON.toJSONString(aa));
+
+
+//        Executors.newWorkStealingPool()
     }
 }
